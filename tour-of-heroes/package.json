@@ -1,11 +1,8 @@
 {
-  "name": "tutorials",
+  "name": "tour-of-heroes",
   "version": "0.0.0",
-  "description": "angular.io tutorials.",
-  "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "db-server": "json-server --watch db.json",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -30,7 +27,6 @@
     "@angular/cli": "~16.1.1",
     "@angular/compiler-cli": "^16.1.0",
     "@types/jasmine": "~4.3.0",
-    "@types/node": "^16.11.35",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
