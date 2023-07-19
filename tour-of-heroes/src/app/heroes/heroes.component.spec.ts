@@ -23,17 +23,21 @@ describe('HeroesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have hero names', () => {
+  it('should have hero list', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const heroHeader = compiled.querySelector('h2')?.textContent;
-    expect(heroHeader).toBe(component.hero.name.toUpperCase() + " Details");
-    console.debug(component);
+    expect(compiled.querySelector('h2')?.textContent).toBe('My Heroes');
+    const heroes = compiled.querySelectorAll('ul.heroes li');
+    expect(heroes.length).toBe(9);
   });
 
-  it('should change hero name', () => {
-    const nameEl = fixture.debugElement.query(By.css("input[id=name]"))
-    nameEl.nativeElement.value = "WinWin";
-    nameEl.nativeElement.dispatchEvent(new Event('input'));
-    expect(component.hero.name).toBe("WinWin");
+  it('should display hero details', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const firstHero = fixture.debugElement.query(By.css('ul.heroes > li button'));
+    firstHero?.nativeElement.dispatchEvent(new Event('click'));
+    fixture.detectChanges();
+
+    const heroHeader = compiled.querySelector('div');
+    expect(heroHeader?.querySelector('h2')?.textContent).toBe(component.heroes[0].name.toUpperCase() + ' Details');
+    expect(heroHeader?.querySelectorAll('div')[1]).toBeTruthy();
   });
 });
