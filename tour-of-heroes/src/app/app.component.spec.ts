@@ -2,13 +2,15 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { FormsModule } from '@angular/forms';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 describe('AppComponent', () => {
   const title = 'Tour of Heroes';
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [
       AppComponent,
-      HeroesComponent
+      HeroesComponent,
+      HeroDetailComponent,
     ],
     imports: [
       FormsModule,
