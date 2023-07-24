@@ -4,6 +4,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { FormsModule } from '@angular/forms';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   const title = 'Tour of Heroes';
@@ -16,6 +17,7 @@ describe('AppComponent', () => {
     ],
     imports: [
       FormsModule,
+      RouterTestingModule,
     ],
   }));
 
