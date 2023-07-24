@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeroesComponent } from './heroes.component';
-import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { FormsModule } from '@angular/forms';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
+import { HeroesComponent } from './heroes.component';
 
 describe('HeroesComponent', () => {
   let component: HeroesComponent;
@@ -16,7 +15,10 @@ describe('HeroesComponent', () => {
         HeroesComponent,
         HeroDetailComponent,
       ],
-      imports: [FormsModule]
+      imports: [
+        FormsModule,
+        RouterTestingModule,
+      ]
     });
     fixture = TestBed.createComponent(HeroesComponent);
     component = fixture.componentInstance;
@@ -32,16 +34,5 @@ describe('HeroesComponent', () => {
     expect(compiled.querySelector('h2')?.textContent).toBe('My Heroes');
     const heroes = compiled.querySelectorAll('ul.heroes li');
     expect(heroes.length).toBe(9);
-  });
-
-  it('should display hero details', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const firstHero = fixture.debugElement.query(By.css('ul.heroes > li button'));
-    firstHero?.nativeElement.dispatchEvent(new Event('click'));
-    fixture.detectChanges();
-
-    const heroHeader = compiled.querySelector('div');
-    expect(heroHeader?.querySelector('h2')?.textContent).toBe(component.heroes[0].name.toUpperCase() + ' Details');
-    expect(heroHeader?.querySelectorAll('div')[1]).toBeTruthy();
   });
 });
